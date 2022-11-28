@@ -1,0 +1,35 @@
+<div class = nav>
+  <div style="--text-3d: #ab0068; --c: white;--d: inline-block; --pr:1rem;">
+    <h3 style="--d: inline-block;">Task App</h3>
+  </div>
+  %= ctx.linkTo('/tasks',{}, 'Tasks');
+  -
+  %= ctx.linkTo('/login',{}, 'Login');
+  -
+  %= ctx.linkTo('/private',{}, 'Private');
+
+  % if (typeof user !== "undefined") {
+	  <form action="/logout" method="post"
+	     style="display: inline"
+	  >
+	  -
+	  <button type="submit"
+	     style="background: none!important;
+	            border: none;
+	            padding: 0!important;
+	            text-decoration: underline;
+	            cursor: pointer;
+	            color: #069;">Logout <%= user.name %></button>
+	  </form>
+  %}
+
+</div>
+<style>
+  .nav{
+    position: sticky;
+    top: 0;
+    background-color: #4b0082;
+    padding: 0 2rem 0 2rem;
+    z-index: 1000;
+  }  
+</style>

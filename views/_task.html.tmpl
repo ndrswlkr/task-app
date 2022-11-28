@@ -1,0 +1,27 @@
+
+
+% let urgency = { '1': 'low', '2': 'mid', '3': 'high'}
+<div class=task-line>
+	<div>
+		<%= task.task %>
+	</div>	
+	<div>
+		<%= task.dateCreated %>
+	</div>	
+	<div>
+		<%=  urgency[task.urgency]  %>
+	</div>	
+	<div>
+		<input type=checkbox 
+			<%=  task.done === 'true' ? 'checked' : '' %>
+		 />
+	</div>	
+</div>
+
+<style>
+	.task-line{
+		display: grid;
+		grid-template-columns: 3fr 3fr 1fr 1fr;
+		gap: 2rem;
+	}
+</style>

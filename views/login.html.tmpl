@@ -1,0 +1,20 @@
+% view.layout = 'layout'
+
+<h1>login</h1>
+<div style="--shadow-hvr:16;">
+<fieldset>
+  <form  action= '/login' method=POST>
+    %if (ctx.flash.message){
+      <p style='--bg: red'> <%= ctx.flash.message %></p>
+      %}
+  email: <%= await ctx.emailFieldTag('email') %>
+  password: <%= await ctx.passwordFieldTag('password') %>
+  <div>
+  %= await ctx.submitButtonTag( 'log in', {class: "black"})
+  </div>
+  
+<p>no account jet? register <a href='/register'>here</a>.</p>
+</fieldset>
+</form>
+</div>
+

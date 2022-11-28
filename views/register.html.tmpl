@@ -1,0 +1,15 @@
+% view.layout = 'layout'
+
+<h1>register</h1>
+<div style="--shadow-hvr:16;">
+<fieldset>
+  <form  action= '/register' method=POST>
+  email: <%= await ctx.emailFieldTag('email') %>
+  password: <%= await ctx.passwordFieldTag('password') %>
+  <div>
+  %= await ctx.submitButtonTag( 'register', {class: "black"})
+  </div>
+  
+</fieldset>
+</form>
+</div>

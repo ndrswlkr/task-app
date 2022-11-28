@@ -1,0 +1,48 @@
+<form method=POST action=<%= ctx.urlFor( 'tasks' ) =%> >
+ <div class="add-task-menu">
+	
+		<input type=text placeholder="describe task" name=task />
+		<fieldset>
+		<legend>urgency
+		</legend>
+		  %= ctx.labelFor('low', 'low')
+			%= await ctx.radioButtonTag('urgency', {id: 'low', value: 'low', checked: true})
+		  %= ctx.labelFor('mid', 'mid')
+			%= await ctx.radioButtonTag('urgency', {id: 'mid', value: 'mid'})
+		  %= ctx.labelFor('high', 'high')
+			%= await ctx.radioButtonTag('urgency', {id: 'high', value: 'high'})
+		</fieldset>
+		<label for=done style="--as:center;">done 
+		<input type=checkbox name=done />
+		</label>
+		<button>Save</button>
+	</div>
+</form>
+
+<style>
+	.add-task-menu{
+		display: grid;
+		background-color: #aaa;
+		grid-template-columns: 4fr 2fr 1fr 1fr;
+		gap: 1rem;
+	}
+	.urgency-input{
+		display: inline-block;
+	}
+	datalist {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	  writing-mode: vertical-lr;
+	  width: 200px;
+	}
+
+	option {
+	  padding: 0;
+	}
+
+	input[type="range"] {
+	  width: 200px;
+	  margin: 0;
+	}
+</style>

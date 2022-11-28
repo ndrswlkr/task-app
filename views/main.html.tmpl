@@ -1,0 +1,10 @@
+% view.layout = 'layout'
+
+<div style="--h: 80vh; --ofy: scroll">
+	% for (let task of tasks) {
+		<%= task.task =%>
+		%= await ctx.include({view: '_task'}, {task: task}) 
+	%}
+</div>
+%= await ctx.include('_add_task')
+

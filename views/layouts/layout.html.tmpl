@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> <%= title %> </title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/bonsai.css">
+  </head>
+  <body  style="--grad:191deg; --grad-color:#4b0082;  min-height:100vh;">
+    %= await ctx.include({view: '_nav'})
+
+    <div class=main>
+      <%= ctx.content.main =%>
+        
+    </div>
+
+    <style>
+      .main{
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    </style>
+
+  </body>
+</html>
