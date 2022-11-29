@@ -10,7 +10,11 @@ app.plugin(jsonConfigPlugin, {file: 'conf/app.conf'});
 
 
 async function db_connect() {
-	const client = new mongodb.MongoClient(app.config.dbUrl)
+	let dbUrl = app.config.dbUrl
+	if(app.mode === 'production'){
+		dbUrl = app.config.dbUrlProduction
+	} 
+	const client = new mongodb.MongoClient(dbUrl)
 	await client.connect()
 	await inject_db(client.db())
 	await userdata_inject_db(client.db())
