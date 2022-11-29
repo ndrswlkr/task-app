@@ -1,7 +1,6 @@
 import mojo, {jsonConfigPlugin} from '@mojojs/core'
 import mongodb from 'mongodb'
 import {inject_db, all_tasks} from './dao/tasks_dao.js'
-import * as argon2 from 'argon2'
 import {inject_db as userdata_inject_db, add_user, verify_user} from './dao/userdata.js'
 
 const say = console.log

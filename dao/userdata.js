@@ -1,4 +1,4 @@
-import * as argon2 from 'argon2'
+import bcrypt from 'bcrypt'
 const say = console.log
 
 let db
@@ -22,7 +22,7 @@ export async function add_user(ctx) {
   }
   else {
   	try{
-  		const hash = await argon2.hash(params.get('password'), "as string");
+  		const hash = await bcrypt.hash(params.get('password'), 12);
   		say(hash)
   		const result = await userdata.insertOne({
   			email: email,
@@ -55,7 +55,7 @@ export async function verify_user(ctx){
 		ctx.flash.message = "wrong username or password"
 		await ctx.redirectTo('/login')
 	}
-	    if (await argon2.verify(user.password, password, 'as string')) {
+	    if (await bcrypt.compare(password, user.password)) {
       	// password match
 				const session = await ctx.session()
 				session.expiration = 20
